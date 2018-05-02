@@ -17,6 +17,7 @@ class MutationType extends AbstractObjectType
     {
         $config->addFields([
             new AddStudentField(),
+            new AddArticleField(),
         ]);
     }
 }

@@ -116,7 +116,7 @@ class Student
 
     public static function createFromName($name)
     {
-        $self = new self;
+        $self = new self();
 
         $self
             ->setName($name)

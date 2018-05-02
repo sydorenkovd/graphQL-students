@@ -8,6 +8,7 @@ use Youshido\GraphQL\Type\ListType\ListType;
 use Youshido\GraphQL\Type\Object\AbstractObjectType;
 use Youshido\GraphQL\Type\Scalar\BooleanType;
 use Youshido\GraphQL\Type\Scalar\IdType;
+use Youshido\GraphQL\Type\Scalar\IntType;
 use Youshido\GraphQL\Type\Scalar\StringType;
 
 class ArticleType extends AbstractObjectType
@@ -24,6 +25,7 @@ class ArticleType extends AbstractObjectType
                 'title'      => new StringType(),
                 'body'       => new StringType(),
                 'published'  => new BooleanType(),
+                'student_id'  => new IntType(),
             ]
         );
     }

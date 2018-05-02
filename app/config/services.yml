@@ -35,4 +35,4 @@ services:
     #         $someArgument: 'some_value'
     resolver.todo:
         class: AppBundle\Resolver\TodoResolver
-        parent: 'resolver.base'
+        public: true

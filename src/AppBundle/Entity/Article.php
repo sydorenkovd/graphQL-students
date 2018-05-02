@@ -42,6 +42,10 @@ class Article
      */
     private $published;
 
+    /**
+     * @ORM\Column(name="student_id", type="integer")
+     */
+    private $studentId;
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="articles")
@@ -63,6 +67,22 @@ class Article
     public function setStudent($student)
     {
         $this->student = $student;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * @param mixed $studentId
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
     }
 
     /**

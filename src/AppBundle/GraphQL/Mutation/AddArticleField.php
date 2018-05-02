@@ -3,6 +3,7 @@
 
 namespace AppBundle\GraphQL\Mutation;
 
+use AppBundle\GraphQL\Type\ArticleType;
 use AppBundle\GraphQL\Type\StudentType;
 use AppBundle\Resolver\TodoResolver;
 use Youshido\GraphQL\Config\Field\FieldConfig;
@@ -15,19 +16,18 @@ use Youshido\GraphQL\Type\Object\AbstractObjectType;
 use Youshido\GraphQL\Type\Scalar\StringType;
 use Youshido\GraphQLBundle\Field\AbstractContainerAwareField;
 
-
-class AddStudentField extends AbstractContainerAwareField
+class AddArticleField extends AbstractContainerAwareField
 {
     public function build(FieldConfig $config)
     {
         $config->addArguments([
-            'name' => new NonNullType(new StringType())
+            'title' => new NonNullType(new StringType())
         ]);
     }
 
     public function resolve($value, array $args, ResolveInfo $info)
     {
-        return $this->container->get('resolver.todo')->create($args['name']);
+        return $this->container->get('resolver.todo')->createArticle($args['title']);
     }
 
     /**
@@ -35,11 +35,11 @@ class AddStudentField extends AbstractContainerAwareField
      */
     public function getType()
     {
-        return new ListType(new StudentType());
+        return new ListType(new ArticleType());
     }
 
     public function getName()
     {
-        return 'add';
+        return 'addArticle';
     }
 }
