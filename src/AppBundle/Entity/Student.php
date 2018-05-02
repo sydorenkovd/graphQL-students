@@ -35,6 +35,26 @@ class Student
      */
     private $groups;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="student")
+     */
+    private $articles;
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param mixed $articles
+     */
+    public function setArticles($articles)
+    {
+        $this->articles = $articles;
+    }
 
     /**
      * Get id
@@ -92,6 +112,17 @@ class Student
     public function getGroups()
     {
         return $this->groups;
+    }
+
+    public static function createFromName($name)
+    {
+        $self = new self;
+
+        $self
+            ->setName($name)
+            ->setGroups(1);
+
+        return $self;
     }
 }
 

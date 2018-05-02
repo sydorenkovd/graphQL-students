@@ -24,7 +24,6 @@ class ArticleType extends AbstractObjectType
                 'title'      => new StringType(),
                 'body'       => new StringType(),
                 'published'  => new BooleanType(),
-                'categories' => new ListType(new CategoryType()),
             ]
         );
     }

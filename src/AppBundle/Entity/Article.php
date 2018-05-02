@@ -44,6 +44,28 @@ class Article
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="articles")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     */
+    private $student;
+
+    /**
+     * @return mixed
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * @param mixed $student
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
+    }
+
+    /**
      * Get id
      *
      * @return int
