@@ -1,7 +1,7 @@
 <?php
 
-namespace AppBundle\GraphQL\Type;
 
+namespace AppBundle\GraphQL\Type;
 
 use Youshido\GraphQL\Config\Object\ObjectTypeConfig;
 use Youshido\GraphQL\Type\ListType\ListType;
@@ -10,9 +10,8 @@ use Youshido\GraphQL\Type\Scalar\BooleanType;
 use Youshido\GraphQL\Type\Scalar\IdType;
 use Youshido\GraphQL\Type\Scalar\StringType;
 
-class ArticleType extends AbstractObjectType
+class CategoryType extends AbstractObjectType
 {
-
     /**
      * @param ObjectTypeConfig $config
      */
@@ -20,11 +19,8 @@ class ArticleType extends AbstractObjectType
     {
         $config->addFields(
             [
-                'id'         => new IdType(),
-                'title'      => new StringType(),
-                'body'       => new StringType(),
-                'published'  => new BooleanType(),
-                'categories' => new ListType(new CategoryType()),
+                'id'   => new IdType(),
+                'name' => new StringType(),
             ]
         );
     }

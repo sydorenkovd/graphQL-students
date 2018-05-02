@@ -1,26 +1,27 @@
 <?php
 
+
 namespace AppBundle\GraphQL\Field;
 
-use AppBundle\Entity\Article;
-use AppBundle\GraphQL\Type\ArticleType;
+use AppBundle\Entity\Student;
+use AppBundle\GraphQL\Type\StudentType;
 use Youshido\GraphQL\Config\Field\FieldConfig;
 use Youshido\GraphQL\Execution\ResolveInfo;
 use Youshido\GraphQL\Type\AbstractType;
 use Youshido\GraphQL\Type\ListType\ListType;
 use Youshido\GraphQL\Type\Object\AbstractObjectType;
-use Youshido\GraphQL\Type\Scalar\BooleanType;
+use Youshido\GraphQL\Type\Scalar\IntType;
 use Youshido\GraphQL\Type\Scalar\StringType;
 use Youshido\GraphQLBundle\Field\AbstractContainerAwareField;
 
-class ArticlesField extends AbstractContainerAwareField
+class StudentsField extends AbstractContainerAwareField
 {
     public function build(FieldConfig $config)
     {
         $config->addArguments(
             [
-                'published' => new BooleanType(),
-                'title'     => new StringType(),
+                'name'   => new StringType(),
+                'groups' => new IntType(),
             ]
         );
     }
@@ -29,7 +30,7 @@ class ArticlesField extends AbstractContainerAwareField
     {
         return $this->container
             ->get('doctrine.orm.entity_manager')
-            ->getRepository(Article::class)
+            ->getRepository(Student::class)
             ->findBy($args);
     }
 
@@ -38,6 +39,6 @@ class ArticlesField extends AbstractContainerAwareField
      */
     public function getType()
     {
-        return new ListType(new ArticleType());
+        return new ListType(new StudentType());
     }
 }
