@@ -1,6 +1,4 @@
-## GraphQL demo
-
-A simple sample project to illustrate how you can use https://github.com/Youshido/GraphQLBundle to organize your backend implementation of Graphql
+## GraphQL application for KNU Shevchenko
 
 ### Install
 
